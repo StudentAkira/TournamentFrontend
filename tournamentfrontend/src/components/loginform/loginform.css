@@ -19,3 +19,10 @@
 input {
     font-size: 1.5rem;
 }
+
+.login_wrapper {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }

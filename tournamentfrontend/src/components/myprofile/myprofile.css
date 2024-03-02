@@ -1,0 +1,19 @@
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.my_profile_wrapper {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+  }
+
+.data_wrapper {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
