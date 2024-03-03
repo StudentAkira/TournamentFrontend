@@ -43,6 +43,7 @@ export class AuthManager{
     let user_data = await this.get_user_data();
 
     } 
+    
     async logout() {
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");

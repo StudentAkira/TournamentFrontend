@@ -12,11 +12,17 @@ export default function NavBar() {
         window.location.href = frontURLs.events_suffix
     }
 
+    const nomination_redirect = () => {
+        window.location.href = frontURLs.nominations_suffix
+    }
+
+
     return (
     <>
         <div className="nav_bar">
-            <div className="my_profile" onClick={profile_redirect}>My profile</div>
-            <div className="my_events" onClick={event_redirect}>My events</div>
+            <div className="profile" onClick={profile_redirect}><h1>profile</h1></div>
+            <div className="events" onClick={event_redirect}><h1>events</h1></div>
+            <div className="nominations" onClick={nomination_redirect}><h1>nominations</h1></div>
         </div>
     </>
     )

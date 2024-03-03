@@ -1,17 +1,16 @@
 import React, { useEffect } from "react"
 import { APIEndpoints, frontURLs } from "../enums.tsx";
 import { useFetcher } from "react-router-dom";
-import { AuthManager } from "../../managers/auth_manager.tsx";
 import NavBar from "../navbar/navbar.tsx";
 
 
-export default function Events() {
+export default function Nominations() {
 
     return (
     <>
         {<NavBar />}
-        <div className="events_wrapper">
-            <div>EVENTS</div>
+        <div className="nominations_wrapper">
+            <div>Nominations</div>
         </div>
     </>
     )

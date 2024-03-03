@@ -13,6 +13,7 @@ export enum frontURLs {
     login_suffix = "/login",
     profile_suffix = "/profile",
     events_suffix = "/events",
+    nominations_suffix = "/nominations",
 
     login = base + login_suffix,
     profile = base + profile_suffix,
