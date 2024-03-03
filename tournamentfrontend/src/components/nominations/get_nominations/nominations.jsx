@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { APIEndpoints, frontURLs } from "../../enums.tsx";
 import { useFetcher } from "react-router-dom";
-import NavBar from "../../navbar/navbar.tsx";
+import { APIEndpoints } from "../../enums.tsx";
+import NavBar from "../../navbar/navbar.jsx";
 
 
-export default function Events() {
+export default function Nominations() {
+
+    if(localStorage.getItem("user_data") == null){
+        window.location.href = "/login"
+    }
 
     const [items, setItems] = useState([]);
 
@@ -19,7 +23,7 @@ export default function Events() {
         credentials: 'include'
         };
 
-        const response = await fetch(APIEndpoints.events + "?offset=0&limit=10", requestOptions);
+        const response = await fetch(APIEndpoints.nominations + "?offset=0&limit=10", requestOptions);
         const response_json = await response.json();
 
         console.log(response_json);
@@ -39,7 +43,9 @@ export default function Events() {
     <>
         {<NavBar />}
         <hr />
-        <div className="event_wrapper">
+        <h1>GET NOMINATIONS</h1>
+        <hr />
+        <div className="nominations_wrapper">
             {
                 items.map(
                     (item) => (

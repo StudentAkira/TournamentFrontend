@@ -25,6 +25,23 @@ export default function NavBar() {
         window.location.href = frontURLs.create_event_suffix
     }
 
+    const create_team_redirect = () => {
+        window.location.href = frontURLs.create_team_suffix
+    }
+
+    const create_nominations_redirect = () => {
+        window.location.href = frontURLs.create_nominations_suffix
+    }
+
+    const create_participant_redirect = () => {
+        window.location.href = frontURLs.create_participant_suffix
+    }
+
+    const participant_redirect = () => {
+        window.location.href = frontURLs.particiapant_suffix
+    }
+
+
     return (
     <>
         <div className="nav_bar">
@@ -33,6 +50,10 @@ export default function NavBar() {
             <div className="nominations" onClick={nomination_redirect}><h1>nominations</h1></div>
             <div className="teams" onClick={teams_redirect}><h1>teams</h1></div>
             <div className="create_event" onClick={create_event_redirect}><h1>create new event</h1></div>
+            <div className="create_team" onClick={create_team_redirect}><h1>create new team</h1></div>
+            <div className="create_nominations" onClick={create_nominations_redirect}><h1>create new nomination</h1></div>
+            <div className="create_participant" onClick={create_participant_redirect}><h1>create new participant</h1></div>
+            <div className="create_participant" onClick={participant_redirect}><h1>get participants</h1></div>
         </div>
     </>
     )

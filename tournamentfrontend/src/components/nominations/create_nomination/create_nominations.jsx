@@ -4,14 +4,14 @@ import { useFetcher } from "react-router-dom";
 import NavBar from "../../navbar/navbar.jsx";
 
 
-export default function CreateEventForm() {
+export default function CreateNominationsForm() {
 
     if(localStorage.getItem("user_data") == null){
-      window.location.href = "/login"
+        window.location.href = "/login"
     }
 
     const [requestResult, setRequestResult] = useState(null);
-    const [nominationInputs, setNominationInputs] = useState([]);
+    const [nominationInputs, setNominationInputs] = useState([<input type="text" id={`nomination_name_1`}/>]);
 
     const create_event_request = async () => {
         console.log(nominationInputs.length);
@@ -27,10 +27,7 @@ export default function CreateEventForm() {
 
         console.log(nominations);
 
-        const raw = JSON.stringify({
-          "name": document.getElementById("event_name").value,
-          "nominations": nominations
-        });
+        const raw = JSON.stringify(nominations);
         
         const requestOptions = {
           method: "POST",
@@ -40,7 +37,7 @@ export default function CreateEventForm() {
           credentials: 'include'
         };
         
-        const response = await fetch(APIEndpoints.events, requestOptions);
+        const response = await fetch(APIEndpoints.nominations, requestOptions);
         const response_json = await response.json();
 
         if("detail" in response_json){
@@ -54,10 +51,9 @@ export default function CreateEventForm() {
     <>
         {<NavBar />}
         <hr />
-        <h1>CREATE EVENT</h1>
+        <h1>CREATE NOMINATIONS</h1>
         <hr />
         <div className="event_create_wrapper">
-            Event name :: <input type="text" id="event_name"/><br />
             {
                 nominationInputs.map(
                     (item, index) => (

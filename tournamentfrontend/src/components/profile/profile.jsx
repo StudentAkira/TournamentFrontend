@@ -4,7 +4,7 @@ import { APIEndpoints, frontURLs } from "../enums.tsx";
 import { useFetcher } from "react-router-dom";
 import { AuthManager } from "../../managers/auth_manager.tsx";
 import { UserDataManager } from "../../managers/user_data_manager.tsx";
-import NavBar from "../navbar/navbar.tsx";
+import NavBar from "../navbar/navbar.jsx";
 
 
 export default function Profile() {

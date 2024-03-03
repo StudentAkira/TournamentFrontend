@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { APIEndpoints, frontURLs } from "../enums.tsx";
+import { APIEndpoints, frontURLs } from "../../enums.tsx";
 import { useFetcher } from "react-router-dom";
-import NavBar from "../navbar/navbar.tsx";
+import NavBar from "../../navbar/navbar.jsx";
 
 
-export default function Teams() {
+export default function Events() {
 
     const [items, setItems] = useState([]);
+
+    if(localStorage.getItem("user_data") == null){
+        window.location.href = "/login"
+    }
 
     const get_items_request = async () => {
         const myHeaders = new Headers();
@@ -19,7 +23,7 @@ export default function Teams() {
         credentials: 'include'
         };
 
-        const response = await fetch(APIEndpoints.teams + "?offset=0&limit=10", requestOptions);
+        const response = await fetch(APIEndpoints.events + "?offset=0&limit=49", requestOptions);
         const response_json = await response.json();
 
         console.log(response_json);
@@ -39,7 +43,9 @@ export default function Teams() {
     <>
         {<NavBar />}
         <hr />
-        <div className="teams_wrapper">
+        <h1>GET EVENTS</h1>
+        <hr />
+        <div className="event_wrapper">
             {
                 items.map(
                     (item) => (
