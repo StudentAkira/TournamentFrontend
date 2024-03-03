@@ -33,13 +33,14 @@ export class AuthManager{
     const response = await fetch(APIEndpoints.login, requestOptions)
     const response_json = await response.json()
 
-    console.log(response_json);
     if("message" in response_json){
-        window.location.href = frontURLs.my_profile;
+        window.location.href = frontURLs.profile;
     }
     if("detail" in response_json){
         alert(response_json["detail"]["error"]);
     };
+
+    let user_data = await this.get_user_data();
 
     } 
     async logout() {
@@ -62,10 +63,37 @@ export class AuthManager{
         localStorage.removeItem("user_data");
 
     }
-    logged_out_only() {
-        if(localStorage.getItem("user_data") != null)window.location.href = frontURLs.my_profile_suffix;
-    }
-    logged_in_only() {
-        if(localStorage.getItem("user_data") == null)window.location.href = frontURLs.login_suffix;
-    }
+
+    async get_user_data() {
+
+        if(localStorage.getItem("user_data") != null)return JSON.parse(localStorage.getItem("user_data"))
+
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+    
+        const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+        credentials: 'include'
+        };
+    
+        const respose = await fetch(APIEndpoints.profile, requestOptions)
+        const response_json = await respose.json();
+    
+        if("detail" in response_json){
+            window.location.href = frontURLs.login;
+            localStorage.removeItem("user_data");
+            return;
+        }
+        
+        let response_keys = Object.keys(response_json);
+        let data = {};
+
+        for(let i = 0; i < response_keys.length; i++){
+            data[response_keys[i]] = response_json[response_keys[i]];
+        }
+        
+        return localStorage.setItem("user_data", JSON.stringify(data))
+    } 
 }
