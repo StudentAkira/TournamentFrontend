@@ -2,9 +2,13 @@ import React, { useEffect } from "react"
 import "./myprofile.css" 
 import { APIEndpoints, frontURLs } from "../enums.tsx";
 import { useFetcher } from "react-router-dom";
+import { AuthManager } from "../../managers/auth_manager.tsx";
 
 
 export default function MyProfile() {
+
+    let auth_manager = new AuthManager();
+
 
     useEffect(() => {
         get_my_profile_request()
@@ -28,44 +32,22 @@ export default function MyProfile() {
             console.log(response_json);
             
             window.location.href = frontURLs.login;
+            return;
         }
-
-        console.log(Object.keys(response_json));
         
         let response_keys = Object.keys(response_json);
-        let element;
+        let data = {}
 
         for(let i = 0; i < response_keys.length; i++){
-            element = document.getElementById(response_keys[i]);
+            let element = document.getElementById(response_keys[i]);
             if(element){
-                element.innerHTML = `${response_keys[i]} :: ${response_json[response_keys[i]]}`
-                localStorage.setItem(response_keys[i], response_json[response_keys[i]]);
+                element.innerHTML = `${response_keys[i]} :: ${response_json[response_keys[i]]}`;
+                data[response_keys[i]] = response_json[response_keys[i]];
             }
         }
-        
-
-
+        localStorage.setItem("user_data", JSON.stringify(data))
     } 
 
-    const logout_func = async () => {
-        const myHeaders = new Headers();
-        myHeaders.append("accept", "application/json");
-
-        const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        redirect: "follow",
-        credentials: 'include'
-        };
-
-        const response = await fetch(APIEndpoints.logout, requestOptions);
-        const response_json = await response.json();
-
-        if("message" in response_json){
-            window.location.href = frontURLs.login;
-        }     
-
-    }
 
     return (
     <>
@@ -77,7 +59,7 @@ export default function MyProfile() {
                 <h4 id="third_name"></h4>
                 <h4 id="phone"></h4>
                 <h4 id="role"></h4>
-                <input type="button" value="logout" onClick={logout_func}/>
+                <input type="button" value="logout" onClick={auth_manager.logout}/>
             </div>
         </div>
     </>
