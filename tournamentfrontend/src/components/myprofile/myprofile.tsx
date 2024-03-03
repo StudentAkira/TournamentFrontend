@@ -30,23 +30,20 @@ export default function MyProfile() {
             window.location.href = frontURLs.login;
         }
 
-        const email = document.getElementById("email");
-        email.innerText = `Email :: ${response_json["email"]}`;
+        console.log(Object.keys(response_json));
+        
+        let response_keys = Object.keys(response_json);
+        let element;
 
-        const first_name = document.getElementById("first_name");
-        first_name.innerText = `First name :: ${response_json["first_name"]}`
+        for(let i = 0; i < response_keys.length; i++){
+            element = document.getElementById(response_keys[i]);
+            if(element){
+                element.innerHTML = `${response_keys[i]} :: ${response_json[response_keys[i]]}`
+                localStorage.setItem(response_keys[i], response_json[response_keys[i]]);
+            }
+        }
+        
 
-        const second_name = document.getElementById("second_name");
-        second_name.innerText = `Second name :: ${response_json["second_name"]}`
-
-        const third_name = document.getElementById("third_name");
-        third_name.innerText = `Third name :: ${response_json["third_name"]}`
-
-        const phone = document.getElementById("phone");
-        phone.innerText = `Phone name :: ${response_json["phone_name"]}`
-
-        const role = document.getElementById("role");
-        role.innerText = `First name :: ${response_json["role"]}`
 
     } 
 

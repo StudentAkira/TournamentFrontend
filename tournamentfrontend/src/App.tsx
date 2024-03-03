@@ -6,11 +6,14 @@ import MyProfile from './components/myprofile/myprofile.tsx';
 import { frontURLs } from './components/enums.tsx';
 
 function App() {
+
+  
+
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path={frontURLs.login_suffix} element={<LoginForm />} />
+        <Route path={frontURLs.login_suffix} element={<LoginForm />} onEnter={} />
         <Route path={frontURLs.my_profile_suffix} element={<MyProfile />} />
       </Routes>
     </BrowserRouter>
