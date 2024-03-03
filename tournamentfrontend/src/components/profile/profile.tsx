@@ -8,32 +8,7 @@ import NavBar from "../navbar/navbar.tsx";
 
 
 export default function Profile() {
-
-
-    useEffect(() => {
-        get_my_profile_request()
-      }, []);
-
-    const logout = async () => {
-        const myHeaders = new Headers();
-        myHeaders.append("accept", "application/json");
-
-        const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        redirect: "follow",
-        credentials: 'include'
-        };
-
-        const response = await fetch(APIEndpoints.logout, requestOptions);
-        const response_json = await response.json();
-
-        if("message" in response_json){
-            window.location.href = frontURLs.login;
-        }
-        localStorage.removeItem("user_data");
-    }
-
+    
     const get_my_profile_request = async () => {
         
         const myHeaders = new Headers();
@@ -66,6 +41,32 @@ export default function Profile() {
         }
         localStorage.setItem("user_data", JSON.stringify(data))
     } 
+
+    useEffect(() => {
+        get_my_profile_request()
+      }, []);
+
+    const logout = async () => {
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+
+        const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        redirect: "follow",
+        credentials: 'include'
+        };
+
+        const response = await fetch(APIEndpoints.logout, requestOptions);
+        const response_json = await response.json();
+
+        if("message" in response_json){
+            window.location.href = frontURLs.login;
+        }
+        localStorage.removeItem("user_data");
+    }
+
+    
 
     return (
     <>

@@ -4,7 +4,7 @@ import { useFetcher } from "react-router-dom";
 import NavBar from "../navbar/navbar.tsx";
 
 
-export default function Nominations() {
+export default function Teams() {
 
     const [items, setItems] = useState([]);
 
@@ -19,7 +19,7 @@ export default function Nominations() {
         credentials: 'include'
         };
 
-        const response = await fetch(APIEndpoints.nominations + "?offset=0&limit=10", requestOptions);
+        const response = await fetch(APIEndpoints.teams + "?offset=0&limit=10", requestOptions);
         const response_json = await response.json();
 
         console.log(response_json);
@@ -39,7 +39,7 @@ export default function Nominations() {
     <>
         {<NavBar />}
         <hr />
-        <div className="nominations_wrapper">
+        <div className="teams_wrapper">
             {
                 items.map(
                     (item) => (
