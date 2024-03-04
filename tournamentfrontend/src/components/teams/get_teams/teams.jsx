@@ -48,8 +48,19 @@ export default function Teams() {
         <div className="teams_wrapper">
             {
                 items.map(
-                    (item) => (
-                        <h1 key={item.name}>{item.name}</h1>
+                    (team) => (
+                        <div className="team">
+                            <h2 key={team.name}>{team.name}</h2>
+                            <h2>Participants :: </h2>
+                            {
+                                team.participants.map(
+                                    (item) => (
+                                        <h3 key={item.email}>{item.email}</h3>
+                                    )
+                                )
+                            }
+                        <hr />
+                        </div>
                     )
                 )
             }

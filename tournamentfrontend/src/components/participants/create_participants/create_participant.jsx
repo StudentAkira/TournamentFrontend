@@ -56,16 +56,16 @@ export default function CreateParticipantForm() {
         <hr />
         <div className="participant_create_wrapper">
             email :: <input type="text" id="email"/><br />
-            first_name :: <input type="text" id="first_name" value="default"/><br />
-            second_name :: <input type="text" id="second_name" value="default"/><br />
-            third_name :: <input type="text" id="third_name" value="default"/><br />
-            region :: <input type="text" id="region" value="default"/><br />
-            birth_date :: <input type="text" id="birth_date" value="2003-05-19"/><br />
-            educational_institution :: <input type="text" id="educational_institution" value="default"/><br />
-            additional_educational_institution :: <input type="text" id="additional_educational_institution" value="default"/><br />
-            supervisor_first_name :: <input type="text" id="supervisor_first_name" value="default"/><br />
-            supervisor_second_name :: <input type="text" id="supervisor_second_name" value="default"/><br />
-            supervisor_third_name :: <input type="text" id="supervisor_third_name" value="default"/><br />
+            first_name :: <input type="text" id="first_name" defaultValue="default"/><br />
+            second_name :: <input type="text" id="second_name" defaultValue="default"/><br />
+            third_name :: <input type="text" id="third_name" defaultValue="default"/><br />
+            region :: <input type="text" id="region" defaultValue="default"/><br />
+            birth_date :: <input type="text" id="birth_date" defaultValue="2003-05-19"/><br />
+            educational_institution :: <input type="text" id="educational_institution" defaultValue="default"/><br />
+            additional_educational_institution :: <input type="text" id="additional_educational_institution" defaultValue="default"/><br />
+            supervisor_first_name :: <input type="text" id="supervisor_first_name" defaultValue="default"/><br />
+            supervisor_second_name :: <input type="text" id="supervisor_second_name" defaultValue="default"/><br />
+            supervisor_third_name :: <input type="text" id="supervisor_third_name" defaultValue="default"/><br />
             <br />
             <input type="button" value="create" onClick={create_participant}/>
             <br />

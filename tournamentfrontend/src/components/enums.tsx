@@ -4,7 +4,7 @@ export enum APIEndpoints {
     login = base + "/auth/login",
     logout = base + "/auth/logout",
     
-    profile = base + "/users/get_my_profile",
+    profile = base + "/users/profile",
     events = base + "/events/event",
     nominations = base + "/nominations/nominations",
     teams = base + "/teams/teams",
