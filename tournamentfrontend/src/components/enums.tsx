@@ -8,7 +8,8 @@ export enum APIEndpoints {
     events = base + "/events/event",
     nominations = base + "/nominations/nominations",
     teams = base + "/teams/teams",
-    participants = base + "/participants/participant"
+    participants = base + "/participants/participant",
+    participant_to_team = base + "/participants/participant_to_team"
   }
 
 export enum frontURLs {
@@ -24,6 +25,7 @@ export enum frontURLs {
     create_team_suffix = "/teams/create",
     create_nominations_suffix = "/nominations/create",
     create_participant_suffix = "/create/participant",
+    append_participant_to_team_suffix = "/append_participant_to_pteam",
 
     login = base + login_suffix,
     profile = base + profile_suffix,

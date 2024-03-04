@@ -41,6 +41,10 @@ export default function NavBar() {
         window.location.href = frontURLs.particiapant_suffix
     }
 
+    const append_participant_to_team_redirect = () => {
+        window.location.href = frontURLs.append_participant_to_team_suffix
+    }
+
 
     return (
     <>
@@ -54,6 +58,7 @@ export default function NavBar() {
             <div className="create_nominations" onClick={create_nominations_redirect}><h1>create new nomination</h1></div>
             <div className="create_participant" onClick={create_participant_redirect}><h1>create new participant</h1></div>
             <div className="create_participant" onClick={participant_redirect}><h1>get participants</h1></div>
+            <div className="append_participant_to_team" onClick={append_participant_to_team_redirect}><h1>append aprticipant to team</h1></div>
         </div>
     </>
     )

@@ -13,6 +13,7 @@ import Nominations from './components/nominations/get_nominations/nominations.js
 import CreateNominationsForm from './components/nominations/create_nomination/create_nominations.jsx';
 import CreateParticipantForm from './components/participants/create_participants/create_participant.jsx';
 import Participants from './components/participants/get_participants/get_participants.jsx';
+import AppendParticipantToTeam from './components/participants/append_participant_to_team_form/append_participant_to_team_form.jsx';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <Route path={frontURLs.create_nominations_suffix} element={<CreateNominationsForm />} />
         <Route path={frontURLs.create_participant_suffix} element={<CreateParticipantForm />} />
         <Route path={frontURLs.particiapant_suffix} element={<Participants />} />
+        <Route path={frontURLs.append_participant_to_team_suffix} element={<AppendParticipantToTeam />} />
       </Routes>
     </BrowserRouter>
     </div>
