@@ -1,0 +1,8 @@
+.forms_teams_event_nominations {
+    display: flex;
+    justify-content: space-around;
+}
+
+.forms {
+    font-style: 1rem;
+}
