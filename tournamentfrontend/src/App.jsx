@@ -16,6 +16,7 @@ import Participants from './components/participants/get_participants/get_partici
 import ProfileEdit from './components/profile/profile_edit/profile_edit_form.jsx';
 import NominationEvents from './components/nominations_events/get_npminations_events/get_nominations_events.jsx';
 import AppendTeamToNominationEvents from './components/nominations_events/append_team_to_nomination_event/append_team_to_nomination_event.jsx';
+import AppendSoftwareEquipment from './components/software_equipment/append_software_equipment.jsx';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path={frontURLs.profile_edit} element={<ProfileEdit />} />
           <Route path={frontURLs.get_nomination_events_full_info_suffix} element={<NominationEvents />} />
           <Route path={frontURLs.append_team_to_nomination_event_suffix} element={<AppendTeamToNominationEvents />} />
+          <Route path={frontURLs.append_software_equipment_suffix} element={<AppendSoftwareEquipment />} />
         </Routes>
       </BrowserRouter>
       </div>

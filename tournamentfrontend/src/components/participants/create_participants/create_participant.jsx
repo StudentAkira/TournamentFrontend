@@ -6,6 +6,10 @@ import NavBar from "../../navbar/navbar.jsx";
 
 export default function CreateParticipantForm() {
 
+    if(localStorage.getItem("user_data") == null){
+        window.location.href = "/login"
+    }
+
     const [requestResult, setRequestResult] = useState(null);
 
     const create_participant = async () => {

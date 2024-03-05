@@ -7,6 +7,10 @@ import './append_team_to_nomination_event.css';
 
 export default function AppendTeamToNominationEvents() {
 
+    if(localStorage.getItem("user_data") == null){
+        window.location.href = "/login"
+    }
+
     const [teams, setTeams] = useState([]);
     const [nominationEvents, setNominationEvents] = useState([]);
     const [requestResult, setRequestResult] = useState(null);
@@ -95,7 +99,7 @@ export default function AppendTeamToNominationEvents() {
         <hr />
         <div className="forms_teams_event_nominations">
             <div className="forms_team_event_nomination">
-                Team name :: <input type="text" id="team_name"/><br />
+                Team name or participant email :: <input type="text" id="team_name"/><br />
                 Event name :: <input type="text" id="event_name"/><br />
                 Nomination name :: <input type="text" id="nomination_name"/><br /> 
                 <input type="button" value="append" onClick={append_team_to_event_nomination}/>

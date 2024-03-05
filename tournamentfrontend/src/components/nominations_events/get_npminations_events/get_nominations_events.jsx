@@ -6,6 +6,10 @@ import './get_nominations_events.css';
 
 export default function NominationEvents() {
 
+    if(localStorage.getItem("user_data") == null){
+        window.location.href = "/login"
+    }
+
     const [items, setItems] = useState([]);
 
     const [showteams, setShowteams] = useState(false);
