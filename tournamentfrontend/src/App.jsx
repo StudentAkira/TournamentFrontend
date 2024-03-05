@@ -13,10 +13,8 @@ import Nominations from './components/nominations/get_nominations/nominations.js
 import CreateNominationsForm from './components/nominations/create_nomination/create_nominations.jsx';
 import CreateParticipantForm from './components/participants/create_participants/create_participant.jsx';
 import Participants from './components/participants/get_participants/get_participants.jsx';
-import AppendParticipantToTeam from './components/participants/append_participant_to_team_form/append_participant_to_team_form.jsx';
 import ProfileEdit from './components/profile/profile_edit/profile_edit_form.jsx';
 import NominationEvents from './components/nominations_events/get_npminations_events/get_nominations_events.jsx';
-import NavBar from './components/navbar/navbar.jsx';
 import AppendTeamToNominationEvents from './components/nominations_events/append_team_to_nomination_event/append_team_to_nomination_event.jsx';
 
 function App() {
@@ -36,7 +34,6 @@ function App() {
           <Route path={frontURLs.create_nominations_suffix} element={<CreateNominationsForm />} />
           <Route path={frontURLs.create_participant_suffix} element={<CreateParticipantForm />} />
           <Route path={frontURLs.particiapant_suffix} element={<Participants />} />
-          <Route path={frontURLs.append_participant_to_team_suffix} element={<AppendParticipantToTeam />} />
           <Route path={frontURLs.profile_edit} element={<ProfileEdit />} />
           <Route path={frontURLs.get_nomination_events_full_info_suffix} element={<NominationEvents />} />
           <Route path={frontURLs.append_team_to_nomination_event_suffix} element={<AppendTeamToNominationEvents />} />

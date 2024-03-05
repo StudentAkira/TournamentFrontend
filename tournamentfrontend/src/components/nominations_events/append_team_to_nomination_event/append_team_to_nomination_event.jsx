@@ -9,6 +9,7 @@ export default function AppendTeamToNominationEvents() {
 
     const [teams, setTeams] = useState([]);
     const [nominationEvents, setNominationEvents] = useState([]);
+    const [requestResult, setRequestResult] = useState(null);
 
     const get_teams = async () => {
         const myHeaders = new Headers();
@@ -50,7 +51,32 @@ export default function AppendTeamToNominationEvents() {
     }
 
     const append_team_to_event_nomination = async () => {
-        console.log(123);
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+        "team_name": document.getElementById("team_name").value,
+        "event_name": document.getElementById("event_name").value,
+        "nomination_name": document.getElementById("nomination_name").value
+        });
+
+        const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+        credentials: 'include'
+        };
+
+        const response = await fetch(APIEndpoints.append_team_to_event_nomination, requestOptions);
+        const response_json = await response.json();
+        if("detail" in response_json){
+            console.log(response_json);
+            return;
+        }
+        setRequestResult("TEAM APPENDED TO NOMINATION EVENT");
+        
     }
 
     useEffect(
@@ -69,10 +95,11 @@ export default function AppendTeamToNominationEvents() {
         <hr />
         <div className="forms_teams_event_nominations">
             <div className="forms_team_event_nomination">
-                Team name :: <input type="text" /><br />
-                Event name :: <input type="text" /><br />
-                Nomination name :: <input type="text" /><br /> 
+                Team name :: <input type="text" id="team_name"/><br />
+                Event name :: <input type="text" id="event_name"/><br />
+                Nomination name :: <input type="text" id="nomination_name"/><br /> 
                 <input type="button" value="append" onClick={append_team_to_event_nomination}/>
+                {requestResult}
             </div>
             <div className="teams">
                 <h1>:: Teams ::</h1>

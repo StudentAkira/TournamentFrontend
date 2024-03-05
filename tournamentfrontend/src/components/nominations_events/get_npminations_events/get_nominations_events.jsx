@@ -48,13 +48,47 @@ export default function NominationEvents() {
     <>
         {<NavBar />}
         <hr />
-        <h1>GET EVENTS</h1>
+        <h1>GET NOMINATION EVENTS</h1>
         <hr />
         <div className="event_wrapper">
-            {
+
+        {
+            items.map((nomination_event)=>(
+                <ul>
+                    <li>
+                        {nomination_event.event_name} :: {nomination_event.nomination_name}
+                        {nomination_event.teams.map((team)=>(
+                            <ul>
+                                <li>
+                                    {team.name}
+                                    {team.participants.map((participant)=>(
+                                        <ul>
+                                            <li>{participant.email}</li>
+                                        </ul>
+                                    ))}
+                                </li>
+                            </ul>
+                        ))}
+                    </li>
+                </ul>
+            ))
+        }
+
+
+            {/* {
                 items.map(
                     (item) => (
+
+                        
+
                         <div className="nomination_event_wrapper">
+
+                            <ul> 
+                                {item.event_name} :: {item.nomination_name}
+                                {
+                                }
+                            </ul>
+
                             <h1 key={item.event_name+item.nomination_name}>{item.event_name} :: {item.nomination_name}</h1>
                                 <div className="teams">
                                     {
@@ -87,10 +121,8 @@ export default function NominationEvents() {
                         </div>
                     )
                 )
-            }
+            } */}
             <br />
-            
-            <hr />
         </div>
     </>
     )
