@@ -56,7 +56,7 @@ export default function AppendTeamToNominationEvents() {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-        "team_name": document.getElementById("team_name").value,
+        "team_name_or_participant_email": document.getElementById("team_name").value,
         "event_name": document.getElementById("event_name").value,
         "nomination_name": document.getElementById("nomination_name").value
         });

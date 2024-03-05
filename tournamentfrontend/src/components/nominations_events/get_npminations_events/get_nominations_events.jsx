@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useFetcher } from "react-router-dom";
 import NavBar from "../../navbar/navbar.jsx";
 import { APIEndpoints } from "../../enums.tsx";
-
+import './get_nominations_events.css';
 
 export default function NominationEvents() {
 

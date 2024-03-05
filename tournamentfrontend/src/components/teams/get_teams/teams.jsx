@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { APIEndpoints, frontURLs } from "../../enums.tsx";
 import { useFetcher } from "react-router-dom";
 import NavBar from "../../navbar/navbar.jsx";
+import './teams.css';
 
 
 export default function Teams() {
@@ -62,25 +63,6 @@ export default function Teams() {
                 </ul>
             ))
         }
-
-            {/* {
-                items.map(
-                    (team) => (
-                        <div className="team">
-                            <h2 key={team.name}>{team.name}</h2>
-                            <h2>Participants :: </h2>
-                            {
-                                team.participants.map(
-                                    (item) => (
-                                        <h3 key={item.email}>{item.email}</h3>
-                                    )
-                                )
-                            }
-                        <hr />
-                        </div>
-                    )
-                )
-            } */}
         </div>
     </>
     )
