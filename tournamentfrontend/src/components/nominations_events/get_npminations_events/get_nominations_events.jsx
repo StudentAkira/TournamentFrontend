@@ -73,56 +73,6 @@ export default function NominationEvents() {
                 </ul>
             ))
         }
-
-
-            {/* {
-                items.map(
-                    (item) => (
-
-                        
-
-                        <div className="nomination_event_wrapper">
-
-                            <ul> 
-                                {item.event_name} :: {item.nomination_name}
-                                {
-                                }
-                            </ul>
-
-                            <h1 key={item.event_name+item.nomination_name}>{item.event_name} :: {item.nomination_name}</h1>
-                                <div className="teams">
-                                    {
-                                        item.teams.map(
-                                            (team) => (
-                                                <div className="team">
-                                                    <h3>:: Team ::</h3>
-                                                    {team.name}
-                                                    <h3>:: Participants ::</h3>
-                                                    {
-                                                        <div className="participants">
-                                                            {
-                                                                team.participants.map(
-                                                                    (participant) => (
-                                                                        <div className="participant">
-                                                                            {participant.email}
-                                                                        </div>
-                                                                    )
-                                                                )
-                                                            }
-                                                        </div>
-                                                    }
-                                                    <br />
-                                                </div>
-                                            )
-                                        )
-                                    }
-                                </div>
-                            <hr />
-                        </div>
-                    )
-                )
-            } */}
-            <br />
         </div>
     </>
     )

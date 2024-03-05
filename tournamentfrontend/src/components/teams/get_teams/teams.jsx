@@ -46,7 +46,24 @@ export default function Teams() {
         <h1>GET TEAMS</h1>
         <hr />
         <div className="teams_wrapper">
-            {
+        {
+            items.map((team)=>(
+                <ul>
+                    <li>
+                        {team.name}
+                        {team.participants.map((participant)=>(
+                            <ul>
+                                <li>
+                                    {participant.email}
+                                </li>
+                            </ul>
+                        ))}
+                    </li>
+                </ul>
+            ))
+        }
+
+            {/* {
                 items.map(
                     (team) => (
                         <div className="team">
@@ -63,7 +80,7 @@ export default function Teams() {
                         </div>
                     )
                 )
-            }
+            } */}
         </div>
     </>
     )
