@@ -14,6 +14,7 @@ export default function AppendTeamToNominationEvents() {
     const [teams, setTeams] = useState([]);
     const [nominationEvents, setNominationEvents] = useState([]);
     const [requestResult, setRequestResult] = useState(null);
+    const [participantInputs, setParticipantsInputs] = useState([]);
 
     const get_teams = async () => {
         const myHeaders = new Headers();
@@ -59,10 +60,21 @@ export default function AppendTeamToNominationEvents() {
         myHeaders.append("accept", "application/json");
         myHeaders.append("Content-Type", "application/json");
 
+
+        let participant_eamils = [];
+
+        for(let i = 0; i < participantInputs.length; i++){
+            participant_eamils = [...participant_eamils, document.getElementById(`participant_email_${i + 1}`).value]
+        }
+
+
         const raw = JSON.stringify({
-        "team_name_or_participant_email": document.getElementById("team_name").value,
+        "team_name": document.getElementById("team_name").value,
+        "participant_emails": participant_eamils,
         "event_name": document.getElementById("event_name").value,
-        "nomination_name": document.getElementById("nomination_name").value
+        "nomination_name": document.getElementById("nomination_name").value,
+        "software": document.getElementById("software").value,
+        "equipment": document.getElementById("equipment").value
         });
 
         const requestOptions = {
@@ -70,17 +82,17 @@ export default function AppendTeamToNominationEvents() {
         headers: myHeaders,
         body: raw,
         redirect: "follow",
-        credentials: 'include'
+        credentials: "include"
         };
 
-        const response = await fetch(APIEndpoints.append_team_to_event_nomination, requestOptions);
+        const response = await fetch(APIEndpoints.append_team_to_event_nomination, requestOptions)
         const response_json = await response.json();
+
         if("detail" in response_json){
-            console.log(response_json);
+            console.log(response_json)
             return;
         }
-        setRequestResult("TEAM APPENDED TO NOMINATION EVENT");
-        
+        setRequestResult("APPENDED");        
     }
 
     useEffect(
@@ -101,30 +113,62 @@ export default function AppendTeamToNominationEvents() {
             <div className="forms_team_event_nomination">
                 Team name or participant email :: <input type="text" id="team_name"/><br />
                 Event name :: <input type="text" id="event_name"/><br />
+                Software :: <input type="text" id="software"/><br />
+                Equipment :: <input type="text" id="equipment"/><br />
                 Nomination name :: <input type="text" id="nomination_name"/><br /> 
+                {
+                    participantInputs.map(
+                        (item, index) => (
+                        <div className="input_block" key={`input_block_${index}`}>
+                            <span>Participant email :: {item}</span>
+                        </div> 
+                        )
+                    )
+                }
                 <input type="button" value="append" onClick={append_team_to_event_nomination}/>
+                <input type="button" value="+" onClick={()=>{
+                    setParticipantsInputs(
+                        nominationInputs =>
+                            [...nominationInputs,
+                                <input 
+                                type="text" 
+                                id={
+                                `participant_email_${nominationInputs.length + 1}`
+                                }
+                                />
+                            ]
+                        );
+                    }}/>
+                
                 {requestResult}
             </div>
-            <div className="teams">
-                <h1>:: Teams ::</h1>
+            <ul>
                 {
                     teams.map(
-                        (item) => (
-                            <h1 key={item.name}>{item.name}</h1>
+                        (team) => (
+                                <li key={team.name}>{team.name}
+                                    <ul>    
+                                        {
+                                            team.participants.map((participant)=>(
+                                                <li>{participant.email}</li>
+                                            ))
+                                        }
+                                    </ul>
+                                </li>
                         )
                     )
                 }
-            </div>
-            <div className="event_nominations">
-                <h1>:: Event nominations ::</h1>
-                {
-                    nominationEvents.map(
-                        (item) => (
-                            <h1 key={item.event_name + item.nomination_name}>{item.event_name} :: {item.nomination_name}</h1>
-                        )
+            </ul>
+
+            <ul>
+            {
+                nominationEvents.map(
+                    (item) => (
+                        <li>{item.event_name} :: {item.nomination_name}</li>
                     )
-                }
-            </div>
+                )
+            }
+            </ul>
         </div>
     </>
     )

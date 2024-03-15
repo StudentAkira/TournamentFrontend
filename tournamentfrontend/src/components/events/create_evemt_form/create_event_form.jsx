@@ -29,6 +29,7 @@ export default function CreateEventForm() {
 
         const raw = JSON.stringify({
           "name": document.getElementById("event_name").value,
+          "date": document.getElementById("date").value,
           "nominations": nominations
         });
         
@@ -58,6 +59,7 @@ export default function CreateEventForm() {
         <hr />
         <div className="event_create_wrapper">
             Event name :: <input type="text" id="event_name"/><br />
+            Date :: <input type="text" id="date"/><br />
             {
                 nominationInputs.map(
                     (item, index) => (

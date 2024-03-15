@@ -9,8 +9,8 @@ export enum APIEndpoints {
     nominations = base + "/nominations/nominations",
     teams = base + "/teams/teams",
     participants = base + "/participants/participant",
-    get_nomination_events_full_info = base + "/tournament_registration/nomination_event_full_info",
-    get_nomination_events_names = base + "/tournament_registration/nomination_event_names",
+    get_nomination_events_full_info = base + "/nomination_event/nomination_event_full_info",
+    get_nomination_events_names = base + "/nomination_event/nomination_event_names",
     append_team_to_event_nomination = base + "/tournament_registration/nomination_event_team",
     set_team_software_equipment = base + "/teams/team_software_equipment"
   }
